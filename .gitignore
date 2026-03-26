@@ -1,0 +1,45 @@
+# =========================
+# Build artifacts
+# =========================
+*.o
+*.obj
+*.exe
+*.out
+*.app
+
+# Debug / Release folders (if used)
+bin/
+build/
+Debug/
+Release/
+
+# =========================
+# Code::Blocks files
+# =========================
+
+# User-specific settings
+*.layout
+*.depend
+
+# Auto-generated workspace files
+*.workspace
+
+# Backup files
+*.bak
+*.cbp.bak
+
+# =========================
+# OS files
+# =========================
+
+# Windows
+Thumbs.db
+
+# macOS
+.DS_Store
+
+# =========================
+# Logs / temp
+# =========================
+*.log
+*.tmp
