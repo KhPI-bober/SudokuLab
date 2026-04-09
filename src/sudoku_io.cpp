@@ -1,55 +1,47 @@
 #include "sudoku_io.h"
 
+#include "format"
 #include "iostream"
 
 std::istream& operator>>(std::istream& cin, Board& board)
 {
-    for (Row& row : board)
-    {
-        for (int& el : row)
-        {
-            char ch;
-            cin >> ch;
-            if (ch < '0' || ch > '9')
-            {
-                ch = '0';
-            }
-            el = ch - '0';
-        }
-    }
+    board.read(cin);
 
     return cin;
 }
 
 std::ostream& operator<<(std::ostream& cout, const Board& board)
 {
-    for (const Row& row : board)
-    {
-        for (int el : row)
-        {
-            if (el == 0)
-            {
-                cout << "- ";
-            }
-            else
-            {
-                cout << el << " ";
-            }
-        }
-        cout << "\n";
-    }
+    board.print(cout);
 
     return cout;
 }
 
-void log(const std::string& message, const std::string& verb)
-{
-    std::string logStr =
-        "[" +
-        verb +
-        "] " +
-        message
-    ;
+std::ostream* Logger::output = nullptr;
 
-    std::cout << logStr << "\n";
+void Logger::setOutput(std::ostream& cout)
+{
+    output = &cout;
+}
+
+void Logger::info(const std::string& message)
+{
+    log(message, "INFO");
+}
+
+void Logger::warning(const std::string& message)
+{
+    log(message, "WARNING");
+}
+
+void Logger::error(const std::string& message)
+{
+    log(message, "ERROR");
+}
+
+void Logger::log(const std::string& message, const std::string& verb)
+{
+    std::ostream& cout = output == nullptr ? std::cout : *output;
+
+    cout << std::format("[{}] {}\n", verb, message);
 }

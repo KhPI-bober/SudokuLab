@@ -28,9 +28,12 @@
 		<Unit filename="include/sudoku_io.h" />
 		<Unit filename="include/sudoku_solver.h" />
 		<Unit filename="include/sudoku_types.h" />
+		<Unit filename="include/sudoku_utils.h" />
 		<Unit filename="src/main.cpp" />
 		<Unit filename="src/sudoku_io.cpp" />
 		<Unit filename="src/sudoku_solver.cpp" />
+		<Unit filename="src/sudoku_types.cpp" />
+		<Unit filename="src/sudoku_utils.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
