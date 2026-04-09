@@ -1,4 +1,5 @@
 #include "sudoku_io.h"
+#include "sudoku_solver.h"
 #include "sudoku_types.h"
 
 #include "fstream"
@@ -14,16 +15,30 @@ int main()
     Board board;
 
     cin >> board;
-    cout << board;
 
     if (board.isValid())
     {
-        Logger::info("Board is ok");
+        Logger::info("Start board is correct");
     }
     else
     {
-        Logger::error("Board has problems");
+        Logger::error("Start board has problems");
+
+        return 0;
     }
+
+    Solver solver;
+
+    if (solver.solve(board))
+    {
+        Logger::info("Board solved");
+    }
+    else
+    {
+        Logger::info("Board is not solved");
+    }
+
+    cout << board;
 
     return 0;
 }
